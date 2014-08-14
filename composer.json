@@ -1,9 +1,9 @@
 {
-    "name": "hatframework/resources/js",
+    "name": "hatframework/hat-resource-js",
     "type": "library",
     "description": "",
     "keywords": [],
-    "homepage": "https://github.com/hat-framework/resources/js",
+    "homepage": "https://github.com/hat-framework/hat-resource-js",
     "license": "MIT",
     "authors": [
         {
