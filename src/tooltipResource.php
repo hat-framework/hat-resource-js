@@ -25,7 +25,7 @@ class tooltipResource extends \classes\Interfaces\resource {
     
     public function iconTool($description, $icon = 'icon-question-sign', $left = false) {
         $this->LoadResource('html', 'html');
-        $url = \classes\Classes\Registered::getTemplateLocation(CURRENT_TEMPLATE);
+        $url = URL.'Application'.DS.'templates'.DS.CURRENT_TEMPLATE;
         $this->html->LoadJs(array(
         $url."/js/jquery-1.7.2.min.js",
         $url."/js/jquery-ui-1.8.21.custom.min.js",
@@ -40,9 +40,9 @@ class tooltipResource extends \classes\Interfaces\resource {
         
     }
     
-    public function nameTool($description, $name) {
+    public function nameTool($description, $name, $href = '') {
         $this->LoadResource('html', 'html');
-        $url = \classes\Classes\Registered::getTemplateLocation(CURRENT_TEMPLATE);
+        $url = URL.'Application'.DS.'templates'.DS.CURRENT_TEMPLATE;
         $this->html->LoadJs(array(
         $url."/js/jquery-1.7.2.min.js",
         $url."/js/jquery-ui-1.8.21.custom.min.js",
@@ -50,7 +50,8 @@ class tooltipResource extends \classes\Interfaces\resource {
         $url."/js/jquery.cleditor.min.js",
         $url."/js/custom_mod.js",
     ));
-    return "<a data-rel='tooltip' title='$description'>$name</a>";
+        $href = ($href == '')?'':"href='$href'";
+    return "<a $href data-rel='tooltip' title='$description'>$name</a>";
         
     }
 
