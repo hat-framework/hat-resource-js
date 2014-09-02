@@ -18,9 +18,10 @@ class tooltipResource extends \classes\Interfaces\resource {
     public function __construct(){
         $this->LoadResource('html', 'html');
         $url = \classes\Classes\Registered::getTemplateLocationUrl(CURRENT_TEMPLATE);
-        $this->html->LoadJquery();
+        //$this->html->LoadJquery();
         $this->html->LoadJs(array(
-            "$url/js/custom_mod.js",
+            $url . "/js/jquery-1.7.2.min.js",
+            $url . "/js/custom_mod.js",
         ));
     }
 
