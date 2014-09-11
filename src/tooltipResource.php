@@ -3,9 +3,6 @@
 class tooltipResource extends \classes\Interfaces\resource {
 
     private static $instance = NULL;
-
-    
-
     public static function getInstanceOf() {
         $class_name = __CLASS__;
         if (!isset(self::$instance)) {
@@ -16,13 +13,7 @@ class tooltipResource extends \classes\Interfaces\resource {
     }
     
     public function __construct(){
-        $this->LoadResource('html', 'html');
-        $url = \classes\Classes\Registered::getTemplateLocationUrl(CURRENT_TEMPLATE);
-        //$this->html->LoadJquery();
-        $this->html->LoadJs(array(
-            $url . "/js/jquery-1.7.2.min.js",
-            $url . "/js/custom_mod.js",
-        ));
+        $this->LoadResource('html', 'html')->LoadJquery();
     }
 
     public function pass($descricao, $title = '?') {
