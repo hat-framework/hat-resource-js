@@ -25,16 +25,16 @@ class tooltipResource extends \classes\Interfaces\resource {
                 </div>";
     }
 
-    public function iconTool($description, $icon = 'icon-question-sign', $left = false) {
+    public function iconTool($description, $icon = 'icon-question-sign', $left = false, $location='bottom') {
         $result = ($left == true) ?
                 "<div class='pull-left'><i class='$icon' data-rel='tooltip' title='$description'></i></div>" :
                 "<i class='$icon' data-rel='tooltip' title='$description'></i>";
         return $result;
     }
 
-    public function nameTool($description, $name, $href = '') {
+    public function nameTool($description, $name, $href = '', $location='bottom') {
         $href = ($href == '') ? '' : "href='$href'";
-        return "<a $href data-rel='tooltip' title='$description'>$name</a>";
+        return "<a $href data-rel='tooltip' title='$description' data-placement='$location'>$name</a>";
     }
 
 }
