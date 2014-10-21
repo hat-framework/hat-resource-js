@@ -32,9 +32,9 @@ class tooltipResource extends \classes\Interfaces\resource {
         return $result;
     }
 
-    public function nameTool($description, $name, $href = '', $location='bottom') {
+    public function nameTool($description, $name, $href = '', $location='bottom', $class='') {
         $href = ($href == '') ? '' : "href='$href'";
-        return "<a $href data-rel='tooltip' title='$description' data-placement='$location'>$name</a>";
+        return "<a $href data-rel='tooltip' title='$description' data-placement='$location' class='$class'>$name</a>";
     }
 
 }
