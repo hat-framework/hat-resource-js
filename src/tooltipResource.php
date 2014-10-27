@@ -11,10 +11,7 @@ class tooltipResource extends \classes\Interfaces\resource {
 
         return self::$instance;
     }
-    
-    public function __construct(){
-        $this->LoadResource('html', 'html')->LoadJquery();
-    }
+    public $placement = '';
 
     public function pass($descricao, $title = '?') {
         $this->LoadResource('html', 'html');
@@ -24,17 +21,30 @@ class tooltipResource extends \classes\Interfaces\resource {
                     <div class='description-text' style='display: none;'>" . $descricao . "</div>
                 </div>";
     }
-
-    public function iconTool($description, $icon = 'icon-question-sign', $left = false, $location='bottom') {
-        $result = ($left == true) ?
-                "<div class='pull-left'><i class='$icon' data-rel='tooltip' title='$description'></i></div>" :
-                "<i class='$icon' data-rel='tooltip' title='$description'></i>";
-        return $result;
+    
+    public function iconTool($descricao,$iconClass = 'glyphicon glyphicon-question-sign desc'){
+         if(is_array($descricao) || trim($descricao) == "") return;
+         $placement = ($this->placement == '')?'right':$this->placement;
+            $var = '<a '
+                    . 'data-toggle="tooltip" '
+                    . 'data-placement="right" '
+                    . 'title="'.$descricao.'">'
+                    . '<span class="'.$iconClass.'"></span>'
+                    . '</a>';
+            $this->LoadResource('html', 'html')->LoadJQueryFunction('$("[data-toggle=tooltip").tooltip();');
+        
+        return $var;
     }
 
     public function nameTool($description, $name, $href = '', $location='bottom', $class='') {
         $href = ($href == '') ? '' : "href='$href'";
         return "<a $href data-rel='tooltip' title='$description' data-placement='$location' class='$class'>$name</a>";
+    }
+    
+    
+    public function setPlacement($placement){
+        $this->placement = $placement;
+        return $this;
     }
 
 }
