@@ -27,7 +27,7 @@ class tooltipResource extends \classes\Interfaces\resource {
          $placement = ($this->placement == '')?'right':$this->placement;
             $var = '<a '
                     . 'data-toggle="tooltip" '
-                    . 'data-placement="right" '
+                    . "data-placement='$this->placement' "
                     . 'title="'.$descricao.'">'
                     . '<span class="'.$iconClass.'"></span>'
                     . '</a>';
