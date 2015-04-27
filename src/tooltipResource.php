@@ -22,10 +22,10 @@ class tooltipResource extends \classes\Interfaces\resource {
                 </div>";
     }
     
-    public function iconTool($descricao,$iconClass = 'glyphicon glyphicon-question-sign desc'){
+    public function iconTool($descricao,$iconClass = 'glyphicon glyphicon-question-sign desc',$extra = ''){
          if(is_array($descricao) || trim($descricao) == "") {return;}
          //$placement = ($this->placement == '')?'right':$this->placement;
-        $var = '<a '
+        $var = "<a $extra"
                 . 'data-toggle="tooltip" '
                 . "data-placement='$this->placement' "
                 . 'title="'.$descricao.'">'
@@ -36,9 +36,9 @@ class tooltipResource extends \classes\Interfaces\resource {
         return $var;
     }
 
-    public function nameTool($description, $name, $href = '', $location='bottom', $class='') {
+    public function nameTool($description, $name, $href = '', $location='bottom', $class='', $extra='') {
         $href = ($href == '') ? '' : "href='$href'";
-        return "<a $href data-rel='tooltip' title='$description' data-placement='$location' class='$class'>$name</a>";
+        return "<a $href data-rel='tooltip' title='$description' data-placement='$location' class='$class' $extra>$name</a>";
     }
     
     
