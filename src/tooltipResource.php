@@ -23,7 +23,12 @@ class tooltipResource extends \classes\Interfaces\resource {
     }
     
     public function iconTool($descricao,$iconClass = 'glyphicon glyphicon-question-sign desc',$extra = ''){
-         if(is_array($descricao) || trim($descricao) == "") {return;}
+        if(is_array($descricao) || trim($descricao) == "") {return;}
+        static $loaded = false;
+        if($loaded === false){
+            $this->LoadResource('html', 'html')->LoadJQueryFunction('$("[data-toggle=tooltip]").tooltip();');
+        }
+        else{$loaded = true;}
          //$placement = ($this->placement == '')?'right':$this->placement;
         $var = "<a $extra"
                 . 'data-toggle="tooltip" '
@@ -31,7 +36,7 @@ class tooltipResource extends \classes\Interfaces\resource {
                 . 'title="'.$descricao.'">'
                 . '<span class="'.$iconClass.'"></span>'
                 . '</a>';
-        $this->LoadResource('html', 'html')->LoadJQueryFunction('$("[data-toggle=tooltip]").tooltip();');
+        
         
         return $var;
     }
