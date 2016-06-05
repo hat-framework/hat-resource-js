@@ -22,7 +22,7 @@ class tooltipResource extends \classes\Interfaces\resource {
                 </div>";
     }
     
-    public function iconTool($descricao,$iconClass = 'glyphicon glyphicon-question-sign desc',$extra = ''){
+    public function iconTool($descricao,$iconClass = 'fa fa-question-circle desc',$extra = ''){
         if(is_array($descricao) || trim($descricao) == "") {return;}
         static $loaded = false;
         if($loaded === false){
